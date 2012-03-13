@@ -30,7 +30,7 @@ def first_factor(n):
     assert n > 1
     if n == 2: return n
     if n % 2 == 0: return 2
-    for i in xrange(3, isqrt(n)+1, 2):
+    for i in range(3, isqrt(n)+1, 2):
         if n % i == 0: return i
     return n
 
@@ -63,19 +63,19 @@ def prime():
 def pow_mod(n, m, p):
     if m == 1: return n % p
     if m == 0: return 1
-    k = pow_mod(n, m/2, p)
+    k = pow_mod(n, m//2, p)
     k = k*k % p
     if m % 2 == 0:
         return k
     return k*n % p
 
 def sieve(n):
-    marked = [i % 2 for i in xrange(n)]
+    marked = [i % 2 for i in range(n)]
     marked[1] = 0
     marked[2] = 1
-    for value in xrange(3, n, 2):
+    for value in range(3, n, 2):
         if marked[value] == 1:
-            for i in xrange(value*3, n, value*2):
+            for i in range(value*3, n, value*2):
                 marked[i] = 0
     return marked
 
