@@ -1,12 +1,17 @@
-#!/usr/bin/python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 from math import *
 from fractions import *
 from itertools import *
 from bisect import *
+import operator as op
+try:
+    reduce=reduce
+except:
+    from functools import reduce
 
-def cached(func):
+def memorize(func):
     pool = {}
     def wrapper(*arg):
         if arg not in pool:
@@ -14,7 +19,7 @@ def cached(func):
         return pool[arg]
     return wrapper
 
-@cached
+@memorize
 def fib(n):
     return fib(n-1)+fib(n-2) if n >= 2 else 1
 
@@ -33,6 +38,7 @@ def is_prime(n):
     return first_factor(n) == n if n >= 2 else False
 
 def prime():
+    # yield primers
     yield 2
     yield 3
     primes = [5]
@@ -123,54 +129,3 @@ def phi(n):
         n = n/p*(p-1)
     return n
 
-#============================
-# Deprecated
-#============================
-
-class Primes(list):
-    _primes = [2, 3]
-    _size = 2
-    def __getitem__(self, n):
-        #prime = self._primes
-        if self._size > n: return self._primes[n]
-        last = self._primes[-1]
-        while True:
-            last += 2
-            up_limit = isqrt(last)
-            flag = True
-            for p in self._primes:
-                if last % p == 0:
-                    flag = False
-                    break
-                if p >= up_limit: break
-            if flag:
-                self._primes.append(last)
-                self._size += 1
-                if self._size > n: 
-                    self._primes[n] = last
-                    return last
-
-def get_prime(index_=None, max=None):
-    assert any((index_, max))
-    if index_ is not None:
-        cnt = index_ - 1
-        for i, p in enumerate(prime()):
-            if i == cnt:
-                return p
-    if max is not None:
-        ps = []
-        for p in prime():
-            if p < max:
-                ps.append(p)
-        return ps
-
-def test_prime(n):
-    ret = []
-    for p in prime():
-        if p > n:
-            break
-        ret.append(p)
-    return ret
-
-def test_fib(n):
-    return [fib(i) for i in xrange(n)]
