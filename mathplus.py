@@ -107,7 +107,7 @@ def factorization(n):
     if n % 2 == 0:
         k = 0
         while n % 2 == 0:
-            n /= 2
+            n //= 2
             k += 1
         ret = [(2, k)]
     else:
@@ -118,7 +118,7 @@ def factorization(n):
         while n % p != 0: p += 2
         k = 0
         while n % p == 0:
-            n /= p
+            n //= p
             k += 1
         ret.append((p, k))
     if n > 1: ret.append((n, 1))
@@ -126,6 +126,6 @@ def factorization(n):
 
 def phi(n):
     for p, k in factorization(n):
-        n = n/p*(p-1)
+        n = n//p*(p-1)
     return n
 

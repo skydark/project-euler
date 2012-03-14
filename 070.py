@@ -14,10 +14,12 @@
 from time import time; t=time()
 #import psyco; psyco.full()
 
-from gen_primes import get_primes
+#from gen_primes import get_primes
+from mathplus import get_primes_by_sieve
 
 M = 10000000
-primes = get_primes(M, odd=True)
+primes, _ = get_primes_by_sieve(M, odd_only=True)
+#primes = get_primes(M, odd_only=True)
 #print time()-t
 phis = list(range(M))
 for i in range(2, M, 2):

@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 
 #Let d(n) be defined as the sum of proper divisors of n (numbers less than n which divide evenly into n).
