@@ -13,7 +13,6 @@
 	#1118049290473932
 
 from time import time; t=time()
-from mathplus import isqrt
 
 C = 12
 

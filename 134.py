@@ -15,7 +15,7 @@ from mathplus import log10, get_primes_by_sieve
 
 M = 10**6+5
 
-primes, sieves = get_primes_by_sieve(M)
+primes, _ = get_primes_by_sieve(M)
 
 def f(n, m):
     #assert n > m
