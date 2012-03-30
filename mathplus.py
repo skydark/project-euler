@@ -129,3 +129,5 @@ def phi(n):
         n = n//p*(p-1)
     return n
 
+def Cnr(n, r):
+    return factorial(n)//factorial(r)//factorial(n-r)
