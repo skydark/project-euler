@@ -10,6 +10,10 @@ try:
     reduce=reduce
 except:
     from functools import reduce
+try:
+    range=xrange
+except:
+    range=range
 
 def memorize(func):
     pool = {}
