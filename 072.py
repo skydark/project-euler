@@ -15,14 +15,10 @@
 	#303963552391
 
 from time import time; t=time()
+from mathplus import get_phis_by_sieve
 
 D = 1000000+1
 
-phis = list(range(D))
-phis[1] = 0
-for i in range(2, D):
-    if phis[i] == i:
-        for j in range(i, D, i):
-            phis[j] -= phis[j]//i
+phis = get_phis_by_sieve(D)
 
 print(sum(phis))#, time()-t

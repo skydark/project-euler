@@ -133,5 +133,14 @@ def phi(n):
         n = n//p*(p-1)
     return n
 
+def get_phis_by_sieve(n):
+    phis = list(range(n))
+    phis[1] = 0
+    for i in range(2, n):
+        if phis[i] == i:
+            for j in range(i, n, i):
+                phis[j] -= phis[j]//i
+    return phis
+
 def Cnr(n, r):
     return factorial(n)//factorial(r)//factorial(n-r)
