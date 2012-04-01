@@ -83,11 +83,11 @@ def sieve(n):
                 marked[i] = 0
     return marked
 
-def gcd(m, n):
-    if m < n: m, n = n, m
-    if m == n: return m
-    if n == 0: return m
-    return gcd(n, m % n)
+#def gcd(m, n):
+    #if m < n: m, n = n, m
+    #if m == n: return m
+    #if n == 0: return m
+    #return gcd(n, m % n)
 
 def is_quad(n):
     return isqrt(n)**2 == n
