@@ -28,22 +28,27 @@ from time import time; t=time()
 M = 40000000
 L = 25
 
-phis = list(range(M))
-#lens = [1]*M
-s = 0
 
-for p in range(2, M):
-    if phis[p] == p:
-        #phis[p] = p-1
-        for m in range(p*2, M, p):
-            phis[m] -= phis[m]//p
-        #lens[p] = lens[p-1]+1
-        phis[p] = phis[p-1]+1
-        #if lens[p] == L: s += p
-        if phis[p] == L: s += p
-    else:
-        #lens[p] = lens[phis[p]]+1
-        phis[p] = phis[phis[p]]+1
+def main(M, L):
+    phis = list(range(M))
+    #lens = [1]*M
+    s = 0
+
+    for p in range(2, M):
+        if phis[p] == p:
+            #phis[p] = p-1
+            for m in range(p*2, M, p):
+                phis[m] -= phis[m]//p
+            #lens[p] = lens[p-1]+1
+            phis[p] = phis[p-1]+1
+            #if lens[p] == L: s += p
+            if phis[p] == L: s += p
+        else:
+            #lens[p] = lens[phis[p]]+1
+            phis[p] = phis[phis[p]]+1
+
+    return s
 
 #print sum(p for p, k in enumerate(lens) if k == L and phis[p] == p-1), time()-t
+s = main(M, L)
 print(s)#, time()-t

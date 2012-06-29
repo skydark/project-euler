@@ -28,21 +28,25 @@ def make_pool(n, p):
         pool[i] = ii + pool[ii]
     return pool
 
-P2 = make_pool(M, 2)
-P5 = make_pool(M, 5)
-M2 = P2[M] - L
-M5 = P5[M] - L
-count = 0
-# V = [0, 1, 3, 6]
+def main(M, L):
+    P2 = make_pool(M, 2)
+    P5 = make_pool(M, 5)
+    M2 = P2[M] - L
+    M5 = P5[M] - L
+    count = 0
+    # V = [0, 1, 3, 6]
 
-for a in range(M, (M - 1) // 3, -1): #(M + 2) // 3, M + 1):
-    if a % 2000 == 0: print(a, count)
-    a5 = M5 - P5[a]
-    a2 = M2 - P2[a]
-    for b in range((M - a + 1) // 2, min(a, M - a) + 1):
-        c = M - a - b
-        if P5[b] + P5[c] <= a5 and P2[b] + P2[c] <= a2:
-            count += 6 if a != b != c else 3
+    for a in range(M, (M - 1) // 3, -1): #(M + 2) // 3, M + 1):
+        if a % 2000 == 0: print(a, count)
+        a5 = M5 - P5[a]
+        a2 = M2 - P2[a]
+        for b in range((M - a + 1) // 2, min(a, M - a) + 1):
+            c = M - a - b
+            if P5[b] + P5[c] <= a5 and P2[b] + P2[c] <= a2:
+                count += 6 if a != b != c else 3
 
+    return count
+
+count = main(M, L)
 print(count, time()-t)
 
