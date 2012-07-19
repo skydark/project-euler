@@ -93,12 +93,15 @@
             (cons-stream a (takewhile-stream b 'c))
             )
      )
-    (true the-empty-stream)))
+    (true the-empty-stream))
+  )
 
 (define (stream-to-list s)
   (if (empty-stream? s)
     '()
-    (cons (head s) (stream-to-list (tail s)))))
+    (cons (head s) (stream-to-list (tail s)))
+    )
+)
 
 (define (print-stream s)
    (if (empty-stream? s)
@@ -109,20 +112,6 @@
       )
    )
 )
-
-; (define (enum-interval low high)
-;    (if (> low high)
-;       the-empty-stream
-;       (expand (cons-stream low (enum-interval (+ low 1) high)) 'low 'high)
-;    )
-; )
-; 
-; (define (integers-from n)
-;    (expand (cons-stream n (integers-from (+ n 1))) 'n)
-; )
-; 
-; (set 'integers (integers-from 1))
-; (println "nth 20: " (nth-stream 20 integers))
 ; 
 ; (while true
 ;    (print "> ")
