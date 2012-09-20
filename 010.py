@@ -21,7 +21,7 @@ def pe10(MAX):
     while value < limit:
         if marked[value] == 0:
             s += value
-            for i in range(value*3, MAX, value*2):
+            for i in range(value*value, MAX, value*2):
                 marked[i] = 1
         value += 2
     for i in range(limit//2*2+1, MAX, 2):
