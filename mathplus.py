@@ -15,6 +15,15 @@ try:
 except:
     range=range
 
+def timer(func):
+    def wrapped(*args, **kwargs):
+        from time import time
+        t = time()
+        ans = func(*args, **kwargs)
+        print('Time: %s' %(time()-t))
+        return ans
+    return wrapped
+
 def memorize(func):
     pool = {}
     def wrapper(*arg):
