@@ -4,8 +4,13 @@
 #
 
 #Answer:
-	#
+    #
 
-from time import time; t=time()
+from mathplus import timer
 
-print(time()-t)
+
+@timer
+def pe():
+    pass
+
+print(pe())
